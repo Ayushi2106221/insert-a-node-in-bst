@@ -1,0 +1,50 @@
+class Solution
+{
+    public:
+   void inorder_traversal(Node *root){
+        if(root){
+            inorder_traversal(root->left);
+            //cout<<root->data;
+            inorder_traversal(root->left);
+        }
+    }
+        Node* insert(Node* root, int data) {
+        if(root==NULL){
+            Node *n=new Node(data);
+            root=n;
+            return root;
+        }
+            Node *ptr=root;
+            while(1){
+            if(ptr->data<data){
+                //right subtree
+                if(ptr->right==NULL){
+                    Node *n=new Node(data);
+                    ptr->right=n;
+                    break;
+                }
+                else{
+                    ptr=ptr->right;
+                }
+            }
+            else if(ptr->data>data){
+                //left subtree
+                if(ptr->left==NULL){
+                    Node *n=new Node(data);
+                    ptr->left=n;
+                    break;
+                }
+                else{
+                    ptr=ptr->left;
+                }
+                
+            }
+            else if(ptr->data==data){
+                break;
+            }
+            }
+            inorder_traversal(root);
+            return root;
+    }
+
+};
